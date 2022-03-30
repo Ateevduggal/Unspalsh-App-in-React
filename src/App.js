@@ -6,20 +6,20 @@ const App = () => {
 
   const fetchRequest = async () => {
     const data = await fetch(
-      `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=e87p8Mo2TddFOvRqri0c0bFXJWQM9RxqLOWZpuMNN-4&per_page=20`
+      `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=e87p8Mo2TddFOvRqri0c0bFXJWQM9RxqLOWZpuMNN-4&per_page=24`
     );
     const dataJ = await data.json();
     const result = dataJ.results;
-    console.log(result);
     setRes(result);
   };
 
   useEffect(() => {
     fetchRequest();
-  }, []);
+  },[]);
 
   const Submit = () => {
     fetchRequest();
+    setImg("");
   };
   return (
     <>
@@ -27,7 +27,7 @@ const App = () => {
         <div className="row">
           <div className="col-12 d-flex justify-content-center align-items-center input">
             <input
-              className="col-3 form-control-sm py-1 fs-4 text-capitalize border border-3 border-dark"
+              className="col-lg-3 col-md-5 col-sm-6 form-control-sm py-1 fs-4 text-capitalize border border-3 border-dark"
               type="text"
               placeholder="Search Anything..."
               value={img}
@@ -41,7 +41,7 @@ const App = () => {
               Search
             </button>
           </div>
-          <div className="col-12 d-flex justify-content-evenly flex-wrap">
+          <div className="col-12 d-flex justify-content-evenly flex-wrap result">
             {res.map((val) => {
               return (
                 <>
@@ -49,7 +49,7 @@ const App = () => {
                     key={val.id}
                     className="col-3 img-fluid img-thumbnail"
                     src={val.urls.small}
-                    alt=""
+                    alt="val.alt_description"
                   />
                 </>
               );

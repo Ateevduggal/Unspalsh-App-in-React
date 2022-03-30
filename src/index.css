@@ -11,3 +11,16 @@ body {
   padding: 1% 0;
   box-shadow: 0 3px 10px black;
 }
+@media (min-width: 300px) and (max-width: 576px) {
+  input {
+    width: 40% !important;
+    background-color: #fff !important;
+  }
+  .input {
+    padding: 3.6% 0 !important;
+    background-color: #cec2ce !important;
+  }
+  .result {
+    margin-top: 25% !important;
+  }
+}
