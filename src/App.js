@@ -36,7 +36,7 @@ const App = () => {
             <button
               type="submit"
               onClick={Submit}
-              className="btn bg-dark text-white fs-3 mx-3"
+              className="btn bg-dark text-white fs-5 mx-3"
             >
               Search
             </button>
