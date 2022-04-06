@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
+import useFetch from "./useFetch";
 
 const App = () => {
   const [img, setImg] = useState("");
-  const [res, setRes] = useState([]);
 
-  const fetchRequest = async () => {
-    const data = await fetch(
-      `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=e87p8Mo2TddFOvRqri0c0bFXJWQM9RxqLOWZpuMNN-4&per_page=24`
-    );
-    const dataJ = await data.json();
-    const result = dataJ.results;
-    setRes(result);
-  };
+  const [{ res }, fetchRequest] = useFetch(
+    `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=e87p8Mo2TddFOvRqri0c0bFXJWQM9RxqLOWZpuMNN-4&per_page=24`
+  );
 
   useEffect(() => {
     fetchRequest();
-  },[]);
+  }, []);
 
   const Submit = () => {
     fetchRequest();
